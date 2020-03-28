@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+{% endif %}
+<h1>Create</h1>
+
+<!-- enctype="multipart/form-data" required if you are uploading images -->
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table align= "center">
+    <tr>
+        <td>Title:</td>
+        <td><input type="text" name="title"/></td>
+    </tr>
+    <tr>
+        <td>Body:</td>
+        <td><input type="textbox" name="body"/></td>
+    </tr>
+    <tr>
+        <td>URL:</td>
+        <td><input type="text" name="url"/></td>
+    </tr>
+    <tr>
+        <td>Icon:</td>
+        <td><input type="file" name="icon"/></td>
+    </tr>
+     <tr>
+        <td>Image:</td>
+        <td><input type="file" name="image"/></td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <br/>
+    <input type="submit" value="Add Product" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}
