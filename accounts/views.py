@@ -4,6 +4,9 @@ from django.contrib import auth
 
 
 def signup(request):
+    """
+    Implements signup functionality else returns an error if any problem
+    """
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
             try:
@@ -20,6 +23,9 @@ def signup(request):
         return render(request, 'accounts/signup.html')
 
 def login(request):
+    """
+    Implements login functionality else returns an error if any problemm
+    """
     if request.method == 'POST':
         user = auth.authenticate(username=request.POST['username'],password=request.POST['password'])
         if user is not None:
@@ -32,6 +38,9 @@ def login(request):
         return render(request, 'accounts/login.html')
 
 def logout(request):
+    """
+    Implements logout functionality
+    """
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')

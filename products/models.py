@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Product(models.Model):
+    """
+    Implements the attributes of a product
+    """
     title = models.CharField(max_length=255)
     url = models.URLField(max_length=200)
     pub_date = models.DateTimeField()
@@ -15,7 +18,13 @@ class Product(models.Model):
         return self.title
 
     def summary(self):
+        """
+        Returns a short version of body
+        """
         return self.body[:100]
 
     def pub_date_preety(self):
+        """
+        Modifies date format
+        """
         return self.pub_date.strftime('%b %d %Y')
